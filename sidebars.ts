@@ -6,7 +6,7 @@ import path from 'path';
 // Any .md file in the docs repo that is not listed will be appended at the end automatically.
 // Any entry that has no corresponding .md file will be removed automatically.
 const defined: any[] = [
-  'introduction',
+  'index',
   'quick-start',
   'directory-structure',
   {
@@ -21,7 +21,6 @@ const defined: any[] = [
       'routing',
       'models',
       'views',
-      'theme',
       'context',
       'modules',
       'api-controllers',
@@ -48,9 +47,9 @@ const defined: any[] = [
 // Collect all .md files actually present in the docs repo.
 const docsDir = path.resolve(__dirname, 'docs');
 const existing = new Set(
-  fs.readdirSync(docsDir)
-    .filter(f => f.endsWith('.md') && f !== 'README.md')
-    .map(f => f.replace(/\.md$/, ''))
+    fs.readdirSync(docsDir)
+        .filter(f => f.endsWith('.md') && f !== 'README.md')
+        .map(f => f.replace(/\.md$/, ''))
 );
 
 // Remove entries from defined that have no corresponding .md file.

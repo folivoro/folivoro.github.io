@@ -24,19 +24,7 @@ const config: Config = {
     locales: ['en'],
   },
 
-  plugins: [
-    [
-      '@docusaurus/plugin-client-redirects',
-      {
-        redirects: [
-          {
-            from: '/docs',
-            to: '/docs/introduction',
-          },
-        ],
-      },
-    ],
-  ],
+  plugins: [],
 
   presets: [
     [
@@ -45,6 +33,7 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           editUrl: ({docPath}) => `https://github.com/folivoro/docs/edit/main/${docPath}`,
+          exclude: ['**/README.md'],
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -78,6 +67,7 @@ const config: Config = {
         },
         {
           href: 'https://github.com/folivoro/sloth',
+          label: 'GitHub',
           position: 'right',
           className: 'header-github-link',
           'aria-label': 'GitHub repository',
@@ -92,7 +82,7 @@ const config: Config = {
           items: [
             {
               label: 'Documentation',
-              to: '/docs/introduction',
+              to: '/docs',
             },
           ],
         },
