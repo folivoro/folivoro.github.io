@@ -2,40 +2,41 @@ import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
-// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
-
 const config: Config = {
   title: 'folivoro',
   tagline: 'WordPress Theme Framework',
   favicon: 'img/favicon.ico',
 
-  // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
-    v4: true, // Improve compatibility with the upcoming Docusaurus v4
+    v4: true,
   },
 
-  // Set the production url of your site here
-  url: 'https://folivoro.com',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
+  url: 'https://folivoro.github.io',
   baseUrl: '/',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'folivoro', // Usually your GitHub org/user name.
-  projectName: 'folivoro.com', // Usually your repo name.
-  trailingSlash: true,
-  deploymentBranch: 'gh-pages',
+  organizationName: 'folivoro',
+  projectName: 'folivoro',
 
-  onBrokenLinks: 'warn',
+  onBrokenLinks: 'throw',
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
   },
+
+  plugins: [
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            from: '/docs',
+            to: '/docs/introduction',
+          },
+        ],
+      },
+    ],
+  ],
 
   presets: [
     [
@@ -43,8 +44,6 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl: ({docPath}) => `https://github.com/folivoro/docs/edit/main/${docPath}`,
         },
         theme: {
@@ -55,11 +54,9 @@ const config: Config = {
   ],
 
   themeConfig: {
-    // Replace with your project's social card
-    image: 'img/sloth-social-card.jpg',
+    image: 'img/docusaurus-social-card.jpg',
     colorMode: {
-      defaultMode: 'dark',
-      respectPrefersColorScheme: false,
+      respectPrefersColorScheme: true,
     },
     navbar: {
       title: '',
@@ -75,18 +72,20 @@ const config: Config = {
           label: 'Docs',
         },
         {
-          href: 'https://folivoro.github.io/sloth/',
+          href: 'https://sixmonkey.github.io/sloth/',
           label: 'API Documentation',
           position: 'right',
         },
         {
           href: 'https://github.com/folivoro/sloth',
-          label: 'GitHub',
           position: 'right',
+          className: 'header-github-link',
+          'aria-label': 'GitHub repository',
         },
       ],
     },
     footer: {
+      style: 'dark',
       links: [
         {
           title: 'Docs',
